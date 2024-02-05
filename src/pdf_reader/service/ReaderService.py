@@ -1,7 +1,7 @@
 import fitz
 
 class ReaderService:
-    def __init__(self, archivo, npage):
+    def __init__(self, archivo, npage, route):
         self.archivo = archivo
         self.npage = npage
 
