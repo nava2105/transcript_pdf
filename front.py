@@ -28,7 +28,8 @@ def registrarArchivo():
             file.save(uploadPath)
             analisisPath = os.path.join('src/pdf_reader/resources', filename)
             # return '<br><br><center>El registro fue un exito<br><br><center>'
-            return (f'<h1>{ReaderService.pageN(analisisPath)}</h1>')
+            return (f'<h1>Metadatos: {ReaderService.meta(analisisPath)}</h1>'
+                f'<h1>Numero de paginas: {ReaderService.pageN(analisisPath)}</h1>')
         return '<br><br><center>Debe ser formato pdf<br><br><center>'
     return render_template('home.html')
 
