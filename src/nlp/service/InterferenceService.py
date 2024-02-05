@@ -6,7 +6,7 @@ class InferenceService:
     def __init__(self):
         self.__model = os.getenv('OPENAI_MODEL', 'text-davinci-003')
         self.__openai_client = OpenAI()
-        self.__prompt_template = 'Transform the number {number} to binary, Example: Number: 7 Binary: 111'
+        self.__prompt_template = 'Eres lingüista y especialista en psicología, dime la emoción más representativa en el texto {text} '
 
     def __inference(self, prompt):
         return CLEAN_TEXT(self.__openai_client.completions.create(
@@ -16,6 +16,6 @@ class InferenceService:
             temperature=TEMPERATURE
         ).choices[0].text)
 
-    def invoke(self, number: int) -> str:
-        prompt = self.__prompt_template.format(number=int)
+    def invoke(self, text: str) -> str:
+        prompt = self.__prompt_template.format(text=str)
         return self.__inference(prompt)

@@ -18,4 +18,4 @@ if __name__ == '__main__':
     # print(reader.pdf2txt1page(archivo,27))
     load_dotenv("secrets/.env")
     print(os.getenv('OPENAI_API_KEY'))
-    print(InferenceService().invoke('12'))
+    print(InferenceService().invoke(reader.pdf2txt1page(archivo,27)))
