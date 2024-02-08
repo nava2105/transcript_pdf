@@ -7,12 +7,7 @@ class InferenceService:
         self.__model = os.getenv('OPENAI_MODEL', 'text-davinci-003')
         self.__openai_client = OpenAI()
         self.__text = ""
-        self.__prompt_template_resume = 'Dame u resumen en un rango de 10 a 20 palabras del texto: '
-        self.__custom_prompt = ""
-
-    def set_custom_prompt(self, custom_prompt):
-        self.__prompt_template_resume = custom_prompt;
-
+        self.__prompt_template_resume = 'Dame un resumen en un rango de 10 a 20 palabras del texto: '
 
     def __inference(self, prompt):
         return CLEAN_TEXT(self.__openai_client.completions.create(
@@ -26,6 +21,6 @@ class InferenceService:
         prompt = (self.__prompt_template_resume) + text
         return self.__inference(prompt)
 
-    def invokeCustom(self, text : str) -> str:
-        prompt = (self.__custom_prompt) + " en el texto: " + text
+    def invokeCustom(self, question : str, text : str) -> str:
+        prompt = "Responde la pregunta: " + question + " en base a el texto: " + text
         return self.__inference(prompt)

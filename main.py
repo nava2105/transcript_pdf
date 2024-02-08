@@ -1,7 +1,7 @@
 from src.pdf_reader.service.ReaderService import ReaderService
 import os
 from dotenv import load_dotenv
-from src.nlp.service.InterferenceService import InferenceService
+from src.nlp.service.InferenceService import InferenceService
 
 if __name__ == '__main__':
     # Definimos un nombre para nuestra clase de lectura
@@ -22,6 +22,5 @@ if __name__ == '__main__':
     # print(os.getenv('OPENAI_API_KEY'))
     # Imprimimos el resultado de nuestro prompt
     print(InferenceService().invokeResume(reader.pdf2txt1page(archivo,8)))
-    prompt = input()
-    InferenceService.set_custom_prompt(InferenceService, prompt)
-    print(InferenceService().invokeCustom(reader.pdf2txt1page(archivo,8)))
+    # prompt = input()
+    print(InferenceService().invokeCustom(prompt, reader.pdf2txt1page(archivo,8)))

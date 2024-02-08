@@ -11,16 +11,11 @@
     <form style="padding: 1%" action="{{url_for('registrarArchivo')}}" method="POST" autocomplete="off" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="doc_input" class="form-label" >Seleccione un archivo para analizar:</label>
-            <input type="file" class="form-control" name="archivo" id="doc_input" aria-describedby="emailHelp" required>
-            <input type="submit" class="form-control" value="Subir Archivo">
-        </div>
-        <div class="mb-3">
+            <input type="file" class="form-control" name="archivo" id="doc_input" accept=".pdf" aria-describedby="emailHelp" required>
             <label for="prompt_input" class="form-label">Ingrese su pregunta:</label>
-            <input type="text" class="form-control" id="prompt_input" aria-describedby="emailHelp" accept=".pdf">
+            <input type="text" class="form-control" id="prompt_input" name="quest" aria-describedby="emailHelp">
+            <input type="submit" class="form-control" value="Preguntar">
         </div>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          Preguntar
-        </button>
 
     </form>
 </body>

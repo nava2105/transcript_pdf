@@ -3,7 +3,7 @@ import main as m
 from src.pdf_reader.service.ReaderService import ReaderService
 import os
 from dotenv import load_dotenv
-from src.nlp.service.InterferenceService import InferenceService
+from src.nlp.service.InferenceService import InferenceService
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
@@ -18,6 +18,7 @@ def home():
 
 @app.route('/registrar-archivo', methods= ['GET', 'POST'])
 def registrarArchivo():
+    load_dotenv("secrets/.env")
     if request.method == 'POST':
         file = request.files['archivo']
         basePath = os.path.dirname(__file__)
@@ -28,6 +29,7 @@ def registrarArchivo():
             file.save(uploadPath)
             analisisPath = os.path.join('src/pdf_reader/resources', filename)
             # return '<br><br><center>El registro fue un exito<br><br><center>'
+            question = request.args.get('quest')
             return (f'<h1>Metadatos: {ReaderService.meta(analisisPath)}</h1>'
                 f'<h1>Numero de paginas: {ReaderService.pageN(analisisPath)}</h1>')
         return '<br><br><center>Debe ser formato pdf<br><br><center>'
