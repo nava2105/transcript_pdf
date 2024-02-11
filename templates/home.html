@@ -2,26 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Detectar emociones del pdf</title>
+    <title>QAsume</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <style>
+        .form-label{
+            color: darkslategray;
+        }
+    </style>
 </head>
-<body>
-    <h1>HOME</h1>
-    <form style="padding: 1%" action="{{url_for('registrarArchivo')}}" method="POST" autocomplete="off" enctype="multipart/form-data">
+<body style="background-color: darkgray">
+    <div style="background-color: dimgray">
+        <h1 style="color: lightgray; font-size: xxx-large; padding: 1%">QAsume</h1>
+    </div>
+    <form style="padding: 1%" action="{{url_for('resumirYContestar')}}" method="POST" autocomplete="off" enctype="multipart/form-data">
         <div class="mb-3">
-            <label for="doc_input" class="form-label" >Seleccione un archivo para analizar:</label>
-            <input type="file" class="form-control" name="archivo" id="doc_input" accept=".pdf" aria-describedby="emailHelp" required>
-            <label for="prompt_input" class="form-label">Ingrese su pregunta:</label>
-            <input type="text" class="form-control" id="prompt_input" name="quest" aria-describedby="emailHelp">
-            <input type="submit" class="form-control" value="Preguntar">
-        </div>
-        <div>
-            <h1>El resumen es:</h1>
-            <p>{{resumen}}</p>
-            <h1>La respuesta es:</h1>
-            <p>{{respuesta}}</p>
+            <div style="padding: 1%" >
+                <label for="doc_input" class="form-label" >Seleccione un archivo para analizar:</label>
+                <input type="file" class="form-control form-control-lg" name="archivo" id="doc_input" accept=".pdf" aria-describedby="emailHelp" required style="cursor: pointer; background-color: lightgray">
+            </div>
+            <div style="padding: 1%" >
+                <label for="prompt_input" class="form-label">Ingrese su pregunta:</label>
+                <input placeholder="Ingrese su pregunta dirigida al pdf" type="text" class="form-control form-control-lg" id="prompt_input" name="quest" aria-describedby="emailHelp" style="cursor: text; background-color: lightgray">
+            </div>
+            <div style="padding: 1%; text-align: center">
+                <input type="submit" class="btn btn-secondary btn-lg" value="Preguntar" style="width: 50%">
+            </div>
         </div>
     </form>
+    {% if mostrar %}
+    <div id="resp" style="padding: 2%">
+        <div style="padding: 1%; background-color: lightgray">
+            <h1 class="form-label">El resumen es:</h1>
+            <p class="form-label">{{resumen}}</p>
+        </div>
+        <div  style="padding: 1%; background-color: lightgray">
+            <h1 class="form-label">La respuesta a la pregunta {{question}} es:</h1>
+            <p class="form-label">{{respuesta}}</p>
+        </div>
+    </div>
+    {% endif %}
 </body>
 </html>
