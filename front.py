@@ -29,9 +29,13 @@ def registrarArchivo():
             file.save(uploadPath)
             analisisPath = os.path.join('src/pdf_reader/resources', filename)
             # return '<br><br><center>El registro fue un exito<br><br><center>'
-            question = request.args.get('quest')
-            return (f'<h1>Metadatos: {ReaderService.meta(analisisPath)}</h1>'
-                f'<h1>Numero de paginas: {ReaderService.pageN(analisisPath)}</h1>')
+            question = str(request.form.get('quest'))
+            texto = ReaderService.pdf2txt1page(analisisPath, 8)
+            resumen = InferenceService().invokeResume(texto)
+            respuesta = InferenceService().invokeCustom(question, texto)
+            return render_template('home.html', resumen=resumen, respuesta=respuesta)
+            '''return (f'<h1>Metadatos: {ReaderService.meta(analisisPath)}</h1>'
+                f'<h1>Numero de paginas: {ReaderService.pageN(analisisPath)}</h1>')'''
         return '<br><br><center>Debe ser formato pdf<br><br><center>'
     return render_template('home.html')
 

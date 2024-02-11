@@ -21,6 +21,6 @@ if __name__ == '__main__':
     # Imprimimos la API_KEY
     # print(os.getenv('OPENAI_API_KEY'))
     # Imprimimos el resultado de nuestro prompt
-    print(InferenceService().invokeResume(reader.pdf2txt1page(archivo,8)))
-    # prompt = input()
-    print(InferenceService().invokeCustom(prompt, reader.pdf2txt1page(archivo,8)))
+    print(InferenceService().invokeResume(reader.pdf2txt1page(archivo,50)))
+    prompt = input()
+    print(InferenceService().invokeCustom(prompt, reader.pdf2txt1page(archivo,50)))
