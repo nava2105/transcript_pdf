@@ -18,6 +18,15 @@ class ReaderService:
 
         salida.close()
 
+    def pdf2str (archivo):
+        doc = fitz.open(archivo)
+        salida = ""
+        for numPagina in range(doc.page_count):
+            pagina = doc.load_page(numPagina)
+            textPagina = pagina.get_text("text")
+            salida += textPagina
+        return salida
+
     def pdf2txt1page(archivo, npage) -> str:
         doc = fitz.open(archivo)
         page = doc.load_page(npage)

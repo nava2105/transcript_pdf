@@ -15,7 +15,7 @@
     <div style="background-color: dimgray">
         <h1 style="color: lightgray; font-size: xxx-large; padding: 1%">QAsume</h1>
     </div>
-    <form style="padding: 1%" action="{{url_for('resumirYContestar')}}" method="POST" autocomplete="off" enctype="multipart/form-data">
+    <form style="padding: 1%; padding-bottom: 0px" action="{{url_for('resumirYContestar')}}" method="POST" autocomplete="off" enctype="multipart/form-data">
         <div class="mb-3">
             <div style="padding: 1%" >
                 <label for="doc_input" class="form-label" >Seleccione un archivo para analizar:</label>
@@ -31,7 +31,7 @@
         </div>
     </form>
     {% if mostrar %}
-    <div id="resp" style="padding: 2%">
+    <div id="resp" style="padding: 2%; padding-top: 0px">
         <div style="padding: 1%; background-color: lightgray">
             <h1 class="form-label">El resumen es:</h1>
             <p class="form-label">{{resumen}}</p>

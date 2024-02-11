@@ -17,10 +17,11 @@ if __name__ == '__main__':
     # Llamamos a la función que imprime la informacion de 1 pagina del pdf
     # print(reader.pdf2txt1page(archivo,5))
     # Cargamos la informacion de nuestro token de openAI
-    load_dotenv("secrets/.env")
+    # load_dotenv("secrets/.env")
     # Imprimimos la API_KEY
     # print(os.getenv('OPENAI_API_KEY'))
     # Imprimimos el resultado de nuestro prompt
-    print(InferenceService().invokeResume(reader.pdf2txt1page(archivo,50)))
-    prompt = input()
-    print(InferenceService().invokeCustom(prompt, reader.pdf2txt1page(archivo,50)))
+    # print(InferenceService().invokeResume(reader.pdf2txt1page(archivo,50)))
+    # prompt = input()
+    # print(InferenceService().invokeCustom(prompt, reader.pdf2txt1page(archivo,50)))
+    # print(reader.pdf2str(archivo))
