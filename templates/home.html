@@ -2,45 +2,58 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>QAsume</title>
+    <title>Transcrypt</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <style>
-        .form-label{
+        .form-label {
             color: darkslategray;
         }
     </style>
 </head>
 <body style="background-color: darkgray">
     <div style="background-color: dimgray">
-        <h1 style="color: lightgray; font-size: xxx-large; padding: 1%">QAsume</h1>
+        <h1 style="color: lightgray; font-size: xxx-large; padding: 1%">Transcrypt</h1>
     </div>
-    <form style="padding: 1%; padding-bottom: 0px" action="{{url_for('resumirYContestar')}}" method="POST" autocomplete="off" enctype="multipart/form-data">
+    <form style="padding: 1%; padding-bottom: 0px" action="{{ url_for('transcribir') }}" method="POST" autocomplete="off" enctype="multipart/form-data">
         <div class="mb-3">
-            <div style="padding: 1%" >
-                <label for="doc_input" class="form-label" >Seleccione un archivo para analizar:</label>
+            <div style="padding: 1%">
+                <label for="doc_input" class="form-label">Seleccione un archivo para transcribir:</label>
                 <input type="file" class="form-control form-control-lg" name="archivo" id="doc_input" accept=".pdf" aria-describedby="emailHelp" required style="cursor: pointer; background-color: lightgray">
             </div>
-            <div style="padding: 1%" >
-                <label for="prompt_input" class="form-label">Ingrese su pregunta:</label>
-                <input placeholder="Ingrese su pregunta dirigida al pdf" type="text" class="form-control form-control-lg" id="prompt_input" name="quest" aria-describedby="emailHelp" style="cursor: text; background-color: lightgray">
-            </div>
             <div style="padding: 1%; text-align: center">
-                <input type="submit" class="btn btn-secondary btn-lg" value="Preguntar" style="width: 50%">
+                <input type="submit" class="btn btn-secondary btn-lg" value="Transcribir" style="width: 50%">
             </div>
         </div>
     </form>
     {% if mostrar %}
     <div id="resp" style="padding: 2%; padding-top: 0px">
         <div style="padding: 1%; background-color: lightgray">
-            <h1 class="form-label">El resumen es:</h1>
-            <p class="form-label">{{resumen}}</p>
-        </div>
-        <div  style="padding: 1%; background-color: lightgray">
-            <h1 class="form-label">La respuesta a la pregunta {{question}} es:</h1>
-            <p class="form-label">{{respuesta}}</p>
+            <h1 class="form-label">La transcripción es:</h1>
+            <p class="form-label" id="transcription">{{ trascription }}</p>
+            <div style="padding: 1%; text-align: center">
+                <button class="btn btn-secondary" onclick="copiarAlPortapapeles()">Copiar al portapapeles</button>
+                <form action="{{ url_for('download_txt') }}" method="POST" style="display: inline;">
+                    <input type="hidden" name="transcription" value="{{ trascription }}">
+                    <button type="submit" class="btn btn-secondary">Descargar como .txt</button>
+                </form>
+                <form action="{{ url_for('download_docx') }}" method="POST" style="display: inline;">
+                    <input type="hidden" name="transcription" value="{{ trascription }}">
+                    <button type="submit" class="btn btn-secondary">Descargar como Word</button>
+                </form>
+            </div>
         </div>
     </div>
     {% endif %}
+    <script>
+        function copiarAlPortapapeles() {
+            const texto = document.getElementById('transcription').innerText;
+            navigator.clipboard.writeText(texto).then(() => {
+                alert("Texto copiado al portapapeles");
+            }).catch(err => {
+                console.error("Error al copiar el texto: ", err);
+            });
+        }
+    </script>
 </body>
 </html>
