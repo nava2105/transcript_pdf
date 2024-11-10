@@ -66,6 +66,15 @@ Build the dependencies
 ```
 $ pip install requirements.txt -r
 ```
+Run front.py file
+* By using python command
+```
+$ python front.py
+```
+* If you are using Python 3 and python points to Python 2 on your system, use python3 instead:
+```
+$ python3 front.py
+```
 Open a browser and enter to
 [http://localhost:5000](http://localhost:5000)
 ### Via Docker-hub
