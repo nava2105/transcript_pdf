@@ -80,11 +80,11 @@ Open a browser and enter to
 ### Via Docker-hub
 Pull the image from Docker-hub
 ```
-$ docker pull na4va4_transcriptor
+$ docker pull na4va4/transcriptor
 ```
 Start a container from the image
 ```
-$ docker run -d na4va4_transcriptor
+$ ocker run -p 5000:5000 na4va4/transcriptor
 ```
 Open a browser and enter to
 [http://localhost:5000](http://localhost:5000)
