@@ -84,7 +84,7 @@ $ docker pull na4va4/transcriptor
 ```
 Start a container from the image
 ```
-$ ocker run -p 5000:5000 na4va4/transcriptor
+$ docker run -p 5000:5000 na4va4/transcriptor
 ```
 Open a browser and enter to
 [http://localhost:5000](http://localhost:5000)
