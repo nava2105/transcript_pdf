@@ -18,28 +18,28 @@
     <form style="padding: 1%; padding-bottom: 0px" action="{{ url_for('transcribir') }}" method="POST" autocomplete="off" enctype="multipart/form-data">
         <div class="mb-3">
             <div style="padding: 1%">
-                <label for="doc_input" class="form-label">Seleccione un archivo para transcribir:</label>
+                <label for="doc_input" class="form-label">Select a file to transcribe:</label>
                 <input type="file" class="form-control form-control-lg" name="archivo" id="doc_input" accept=".pdf" aria-describedby="emailHelp" required style="cursor: pointer; background-color: lightgray">
             </div>
             <div style="padding: 1%; text-align: center">
-                <input type="submit" class="btn btn-secondary btn-lg" value="Transcribir" style="width: 50%">
+                <input type="submit" class="btn btn-secondary btn-lg" value="Transcrypt" style="width: 50%">
             </div>
         </div>
     </form>
     {% if mostrar %}
     <div id="resp" style="padding: 2%; padding-top: 0px">
         <div style="padding: 1%; background-color: lightgray">
-            <h1 class="form-label">La transcripción es:</h1>
+            <h1 class="form-label">The transcription is:</h1>
             <p class="form-label" id="transcription">{{ trascription }}</p>
             <div style="padding: 1%; text-align: center">
-                <button class="btn btn-secondary" onclick="copiarAlPortapapeles()">Copiar al portapapeles</button>
+                <button class="btn btn-secondary" onclick="copiarAlPortapapeles()">Copy to clipboard</button>
                 <form action="{{ url_for('download_txt') }}" method="POST" style="display: inline;">
                     <input type="hidden" name="transcription" value="{{ trascription }}">
-                    <button type="submit" class="btn btn-secondary">Descargar como .txt</button>
+                    <button type="submit" class="btn btn-secondary">Download as .txt</button>
                 </form>
                 <form action="{{ url_for('download_docx') }}" method="POST" style="display: inline;">
                     <input type="hidden" name="transcription" value="{{ trascription }}">
-                    <button type="submit" class="btn btn-secondary">Descargar como Word</button>
+                    <button type="submit" class="btn btn-secondary">Download as Word</button>
                 </form>
             </div>
         </div>
@@ -49,9 +49,9 @@
         function copiarAlPortapapeles() {
             const texto = document.getElementById('transcription').innerText;
             navigator.clipboard.writeText(texto).then(() => {
-                alert("Texto copiado al portapapeles");
+                alert("Text copied to clipboard");
             }).catch(err => {
-                console.error("Error al copiar el texto: ", err);
+                console.error("Error while copying the text: ", err);
             });
         }
     </script>
