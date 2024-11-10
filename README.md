@@ -5,7 +5,7 @@
 3. [Installation](#installation)
 ## General Info
 ***
-This is a project build in python whose purpose is to provide the user an easy way to extract the content of a pdf. 
+This is a project build in python whose purpose is to provide the user an easy way to extract the content of a pdf.
 ## Technologies
 ***
 A list of technologies used within the project:
@@ -24,67 +24,67 @@ Verify you are running Docker or Docker Desktop and open a terminal in the folde
 
 Copy the repository
 ```
-$ git clone https://github.com/nava2105/transcript_pdf.git
+git clone https://github.com/nava2105/transcript_pdf.git
 ```
 Enter the directory
 ```
-$ cd ../transcriptor
+cd ../transcriptor
 ```
 Build and run the container
 ```
-$ docker-compose up --build
+docker-compose up --build
 ```
 Open a browser and enter to
 [http://localhost:5000](http://localhost:5000)
 #### Not using Docker
 Verify you are python version 3.12.0
 ```
-$ python --version
+python --version
 ```
 Copy the repository
 ```
-$ git clone https://github.com/nava2105/transcript_pdf.git
+git clone https://github.com/nava2105/transcript_pdf.git
 ```
 Enter the directory
 ```
-$ cd ../transcriptor
+cd ../transcriptor
 ```
 Create a virtual environment
 ```
-$ python -m venv .venv
+python -m venv .venv
 ```
 Activate your virtual environment
 * In Windows
 ```
-$ .venv\Scripts\activate
+.venv\Scripts\activate
 ```
-* In macOS or Linux
+In macOS or Linux
 ```
-$ source .venv/bin/activate
+source .venv/bin/activate
 ```
 Build the dependencies
 ```
-$ pip install requirements.txt -r
+pip install requirements.txt -r
 ```
 Run front.py file
 * By using python command
 ```
-$ python front.py
+python front.py
 ```
 * If you are using Python 3 and python points to Python 2 on your system, use python3 instead:
 ```
-$ python3 front.py
+python3 front.py
 ```
 Open a browser and enter to
 [http://localhost:5000](http://localhost:5000)
 ### Via Docker-hub
 Pull the image from Docker-hub
 ```
-$ docker pull na4va4/transcriptor
+docker pull na4va4/transcriptor
 ```
 Start a container from the image
 ```
-$ docker run -p 5000:5000 na4va4/transcriptor
+docker run -p 5000:5000 na4va4/transcriptor
 ```
 Open a browser and enter to
 [http://localhost:5000](http://localhost:5000)
