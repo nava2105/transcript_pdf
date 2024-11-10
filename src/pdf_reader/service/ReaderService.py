@@ -11,8 +11,6 @@ class ReaderService:
 
         for pagina in doc:
             texto = pagina.get_text().encode("utf8")
-            """ .encode("utf8") solo permite que se ingrese información de
-                tipo texto, esto excluye imagenes y saltos de linea """
             salida.write(texto)
             salida.write(b"\n-----\n")
 
