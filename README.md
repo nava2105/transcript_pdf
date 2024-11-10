@@ -9,7 +9,6 @@ This is a project build in python whose purpose is to provide the user an easy w
 ## Technologies
 ***
 A list of technologies used within the project:
-using the version 3.12.0 and using flask as a web framework
 * [Python](https://www.python.org): Version 3.12.0
 * [Flask](https://flask.palletsprojects.com/en/stable/): Version 3.0.3
 * [PyMuPDF](https://pymupdf.readthedocs.io/en/latest/): Version 1.24.10
